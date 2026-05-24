@@ -44,13 +44,14 @@ export async function getTools(options?: {
 
   if (error) throw error
 
-  return (data || []).map((item: Record<string, unknown>) => {
-    const cat = item.categories as Record<string, string> | null
+  return (data || []).map((item) => {
+    const tool = item as unknown as Tool
+    const cat = (item as Record<string, unknown>).categories as Record<string, string> | null
     return {
-      ...item,
+      ...tool,
       category_name: cat?.name ?? '',
       category_slug: cat?.slug ?? '',
-    } as ToolWithCategory
+    } satisfies ToolWithCategory
   })
 }
 
@@ -68,13 +69,13 @@ export async function getToolBySlug(
     throw error
   }
 
-  const item = data as Record<string, unknown>
-  const cat = item.categories as Record<string, string> | null
+  const tool = data as unknown as Tool
+  const cat = (data as Record<string, unknown>).categories as Record<string, string> | null
   return {
-    ...(item as Tool),
+    ...tool,
     category_name: cat?.name ?? '',
     category_slug: cat?.slug ?? '',
-  }
+  } satisfies ToolWithCategory
 }
 
 export async function getToolSlugs(): Promise<string[]> {
