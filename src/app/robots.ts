@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://ai-nav.vercel.app/sitemap.xml',
+    sitemap: 'https://ai-navd.vercel.app/sitemap.xml',
   }
 }
