@@ -79,15 +79,15 @@
   4. [x] 创建 `robots.txt`
   5. [x] JSON-LD 结构化数据（工具详情页 — SoftwareApplication schema）
 
-### 9. Deploy to Vercel
-- **Status**: pending
+### 9. Deploy to Vercel ✅
+- **Status**: completed
 - **Description**: 部署上线
 - **Steps**:
-  1. [ ] 创建 GitHub 仓库，推送代码
-  2. [ ] Vercel 关联 GitHub 仓库
-  3. [ ] 配置环境变量（Supabase URL, Anon Key）
-  4. [ ] 确认部署成功
-  5. [ ] 测试线上所有页面功能
+  1. [x] 创建 GitHub 仓库（whitebird777/ai-nav），SSH 推送
+  2. [x] Vercel 关联 GitHub 仓库，自动 CI/CD
+  3. [x] 配置环境变量（Supabase URL + Anon Key）
+  4. [x] 构建成功，TypeScript 严格模式通过
+  5. [x] 测试线上所有页面功能（用户浏览器验证通过）
 
 ---
 
@@ -115,3 +115,4 @@
 - [x] **Task 6 — Category Page** (2026-05-24): /category/[slug] + 工具列表 + 计数 + 空状态 + 404
 - [x] **Task 7 — About Page** (2026-05-24): /about 静态页面 + metadata
 - [x] **Task 8 — SEO Setup** (2026-05-24): generateMetadata 全覆盖 + OG/Twitter + sitemap + robots + JSON-LD
+- [x] **Task 9 — Deploy to Vercel** (2026-05-25): GitHub + Vercel CI/CD + 环境变量 + 线上验证通过
