@@ -40,6 +40,10 @@ export default function AboutPage() {
             <p>等多个方向。</p>
 
             <p>本站会持续更新。</p>
+
+            <p className="mt-8 text-zinc-400 dark:text-zinc-500" dir="rtl" lang="ar">
+              إلى نادية، الفتاة التي تعيش في وهران، الجزائر: أتمنى لكِ السعادة والفرح كل يوم!
+            </p>
           </div>
         </div>
       </Container>
