@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/* TailwindCSS v4 — class-based dark mode (配合 next-themes) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 全局基础样式 */
+body {
+  @apply bg-white text-zinc-900 antialiased;
+  @apply dark:bg-zinc-950 dark:text-zinc-100;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* 链接默认样式 */
+a {
+  @apply transition-colors duration-150;
+}
+
+/* 滚动条 — 暗色模式下更柔和 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-300 dark:bg-zinc-700 rounded-full;
+}
