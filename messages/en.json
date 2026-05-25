@@ -1,0 +1,63 @@
+{
+  "common": {
+    "siteName": "AI Nav",
+    "homepage": "Home",
+    "about": "About",
+    "github": "GitHub",
+    "submitTool": "Submit Tool",
+    "toggleTheme": "Toggle Theme",
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode",
+    "navigation": "Navigation",
+    "all": "All",
+    "search": "Search tools...",
+    "noResults": "No matching tools found",
+    "tryOtherKeywords": "Try other keywords or categories",
+    "tools": "Tools",
+    "categories": "Categories",
+    "noToolsInCategory": "No tools in this category",
+    "backToHome": "Back to Home",
+    "home": "Home",
+    "visitWebsite": "Visit Website",
+    "featured": "Featured",
+    "categoryNotFound": "Category not found",
+    "toolNotFound": "Tool not found",
+    "disclaimer": "This site provides navigation services only and is not responsible for third-party tool content.",
+    "breadcrumbSeparator": "/"
+  },
+  "hero": {
+    "subtitle": "AI TOOLS NAVIGATOR",
+    "titleLine1": "Discover the Best",
+    "titleHighlight": "AI Tools",
+    "description": "Curated AI products to help you discover and choose efficiently"
+  },
+  "footer": {
+    "description": "A curated AI tools navigator. Continuously organizing excellent AI products, helping everyone quickly discover truly useful AI tools."
+  },
+  "homepage": {
+    "title": "AI Nav — Discover the Best AI Tools",
+    "description": "A curated collection of the most practical AI tools to help you discover ChatGPT, Midjourney, Cursor, and more."
+  },
+  "about": {
+    "title": "About",
+    "description": "AI Nav is a curated AI tool navigator, helping everyone quickly discover truly useful AI products.",
+    "heading": "About AI Nav",
+    "whyHeading": "Why This Site Exists",
+    "whyP1": "AI tools are emerging at an astonishing pace, with new products launching every day. But for ordinary users, discovering truly useful and trustworthy tools amidst the flood of information is becoming increasingly difficult.",
+    "whyP2": "AI Nav's mission is simple: apply a layer of curation, organizing high-quality AI tools in one place, so you don't have to search for a needle in an information haystack.",
+    "howHeading": "Our Approach",
+    "howP1": "We don't pursue quantity; we focus on quality and practicality. Every tool listed has been personally tested to ensure it genuinely solves problems, rather than being a fleeting marketing gimmick.",
+    "howP2": "The current categories cover AI Chat, Image, Video, Writing, Programming, Music, Search, Agent, Translation, Office, Design, Productivity, PPT, and more. We'll continue expanding as the AI field evolves.",
+    "contactHeading": "Contact Us",
+    "contactP1": "If you have a great AI tool to recommend or find any inaccurate information, feel free to submit an issue on GitHub or contact us directly. Your feedback directly helps us improve."
+  },
+  "tool": {
+    "free": "Free",
+    "freemium": "Freemium",
+    "paid": "Paid"
+  },
+  "category": {
+    "descriptionTemplate": "Discover the best {category} AI tools",
+    "titleSuffix": " — AI Tools"
+  }
+}

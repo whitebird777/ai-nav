@@ -15,6 +15,7 @@ export interface Tool {
   slug: string
   name: string
   description: string
+  description_en: string | null
   url: string
   category_id: string
   tags: string[]
@@ -30,5 +31,6 @@ export interface Tool {
 // 前端使用 — Tool 携带关联的 category 名称
 export interface ToolWithCategory extends Tool {
   category_name: string
+  category_name_en: string | null
   category_slug: string
 }

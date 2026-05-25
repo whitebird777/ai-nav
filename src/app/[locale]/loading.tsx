@@ -1,5 +1,4 @@
 // 全局 Loading 状态
-// Next.js 在页面数据加载时自动展示
 
 import Container from '@/components/Container'
 

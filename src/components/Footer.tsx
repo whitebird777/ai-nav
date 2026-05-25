@@ -1,10 +1,15 @@
-// 全局 Footer — 产品页脚
-// 三列布局：品牌介绍 + 导航链接 + 版权声明
+// 全局 Footer — locale-aware
 
-import Link from 'next/link'
+'use client'
+
+import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 import Container from './Container'
 
 export default function Footer() {
+  const t = useTranslations('common')
+  const tf = useTranslations('footer')
+
   return (
     <footer className="border-t border-zinc-200 py-12 dark:border-zinc-800">
       <Container>
@@ -19,15 +24,14 @@ export default function Footer() {
               <span>AI Nav</span>
             </Link>
             <p className="mt-3 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
-              精选 AI 工具导航站。持续整理优秀的人工智能产品，
-              帮助每个人快速发现真正好用的 AI 工具。
+              {tf('description')}
             </p>
           </div>
 
           {/* 导航 */}
           <div>
             <h4 className="mb-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-              导航
+              {t('navigation')}
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
@@ -35,7 +39,7 @@ export default function Footer() {
                   href="/"
                   className="text-zinc-500 no-underline transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                 >
-                  首页
+                  {t('homepage')}
                 </Link>
               </li>
               <li>
@@ -43,7 +47,7 @@ export default function Footer() {
                   href="/about"
                   className="text-zinc-500 no-underline transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                 >
-                  关于
+                  {t('about')}
                 </Link>
               </li>
               <li>
@@ -65,7 +69,7 @@ export default function Footer() {
               &copy; {new Date().getFullYear()} AI Nav
             </p>
             <p className="mt-1 text-xs text-zinc-400 dark:text-zinc-500">
-              本站仅提供导航服务，不对第三方工具内容负责。
+              {t('disclaimer')}
             </p>
           </div>
         </div>

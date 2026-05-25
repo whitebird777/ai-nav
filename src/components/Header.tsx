@@ -1,7 +1,11 @@
-// 全局 Header
-// Logo + 导航链接 + GitHub + 提交工具 + 暗色模式切换
+// 全局 Header — locale-aware
+// Logo + 导航链接 + GitHub + 提交工具 + 语言切换 + 暗色模式切换
 
-import Link from 'next/link'
+'use client'
+
+import { useTranslations, useLocale } from 'next-intl'
+import { usePathname } from '@/i18n/navigation'
+import { Link } from '@/i18n/navigation'
 import Container from './Container'
 import ThemeToggle from './ThemeToggle'
 
@@ -20,6 +24,10 @@ function GitHubIcon({ size = 16 }: { size?: number }) {
 }
 
 export default function Header() {
+  const t = useTranslations('common')
+  const locale = useLocale()
+  const pathname = usePathname()
+
   return (
     <header className="sticky top-0 z-50 border-b border-zinc-200 bg-white/80 backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-950/80">
       <Container>
@@ -40,13 +48,13 @@ export default function Header() {
                 href="/"
                 className="rounded-md px-3 py-1.5 text-zinc-600 no-underline hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
               >
-                首页
+                {t('homepage')}
               </Link>
               <Link
                 href="/about"
                 className="rounded-md px-3 py-1.5 text-zinc-600 no-underline hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
               >
-                关于
+                {t('about')}
               </Link>
             </nav>
 
@@ -56,7 +64,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               className="hidden rounded-md px-2 py-1.5 text-zinc-500 no-underline transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 sm:inline-flex sm:items-center sm:gap-1.5"
-              aria-label="GitHub 仓库"
+              aria-label={t('github')}
             >
               <GitHubIcon size={16} />
               <span className="hidden md:inline">GitHub</span>
@@ -69,8 +77,34 @@ export default function Header() {
               rel="noopener noreferrer"
               className="rounded-lg bg-zinc-900 px-3 py-1.5 text-sm font-medium text-white no-underline transition-colors hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
             >
-              提交工具
+              {t('submitTool')}
             </Link>
+
+            {/* 语言切换器 */}
+            <div className="flex items-center rounded-lg border border-zinc-200 p-0.5 dark:border-zinc-700">
+              <Link
+                href={pathname}
+                locale="zh"
+                className={`rounded px-1.5 py-1 text-xs font-medium no-underline transition-colors ${
+                  locale === 'zh'
+                    ? 'bg-zinc-200 text-zinc-900 dark:bg-zinc-700 dark:text-zinc-100'
+                    : 'text-zinc-400 hover:text-zinc-600 dark:text-zinc-500 dark:hover:text-zinc-300'
+                }`}
+              >
+                中
+              </Link>
+              <Link
+                href={pathname}
+                locale="en"
+                className={`rounded px-1.5 py-1 text-xs font-medium no-underline transition-colors ${
+                  locale === 'en'
+                    ? 'bg-zinc-200 text-zinc-900 dark:bg-zinc-700 dark:text-zinc-100'
+                    : 'text-zinc-400 hover:text-zinc-600 dark:text-zinc-500 dark:hover:text-zinc-300'
+                }`}
+              >
+                EN
+              </Link>
+            </div>
 
             <ThemeToggle />
           </div>

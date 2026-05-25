@@ -1,0 +1,63 @@
+{
+  "common": {
+    "siteName": "AI Nav",
+    "homepage": "首页",
+    "about": "关于",
+    "github": "GitHub",
+    "submitTool": "提交工具",
+    "toggleTheme": "切换主题",
+    "switchToLight": "切换到亮色模式",
+    "switchToDark": "切换到暗色模式",
+    "navigation": "导航",
+    "all": "全部",
+    "search": "搜索工具...",
+    "noResults": "没有找到匹配的工具",
+    "tryOtherKeywords": "试试其他关键词或分类",
+    "tools": "工具",
+    "categories": "分类",
+    "noToolsInCategory": "该分类下暂无工具",
+    "backToHome": "返回首页",
+    "home": "首页",
+    "visitWebsite": "访问网站",
+    "featured": "精选",
+    "categoryNotFound": "分类未找到",
+    "toolNotFound": "工具未找到",
+    "disclaimer": "本站仅提供导航服务，不对第三方工具内容负责。",
+    "breadcrumbSeparator": "/"
+  },
+  "hero": {
+    "subtitle": "AI TOOLS NAVIGATOR",
+    "titleLine1": "发现最好用的",
+    "titleHighlight": "AI 工具",
+    "description": "汇集精选 AI 产品，助你高效发现与选择"
+  },
+  "footer": {
+    "description": "精选 AI 工具导航站。持续整理优秀的人工智能产品，帮助每个人快速发现真正好用的 AI 工具。"
+  },
+  "homepage": {
+    "title": "AI Nav — 发现最好用的 AI 工具",
+    "description": "汇集最实用的 AI 工具，帮你发现 ChatGPT、Midjourney、Cursor 等好用的 AI 产品。"
+  },
+  "about": {
+    "title": "关于",
+    "description": "AI Nav 是一个精选 AI 工具导航站，帮助每个人快速发现真正好用的 AI 产品。",
+    "heading": "关于 AI Nav",
+    "whyHeading": "为什么会有这个网站",
+    "whyP1": "AI 工具正在以惊人的速度涌现，每天都有新产品上线。但对于普通用户来说，在海量信息中发现真正好用、值得信赖的工具变得越来越困难。",
+    "whyP2": "AI Nav 的初衷很简单：做一层过滤，把经过筛选的优质 AI 工具整理在一起，让你不必在信息洪流中大海捞针。",
+    "howHeading": "我们的方式",
+    "howP1": "我们不追求收录数量，而是注重质量和实用性。每个收录的工具都经过实际体验，确保它是真正能解决问题的产品，而非昙花一现的营销噱头。",
+    "howP2": "目前的分类覆盖了 AI 聊天、图像、视频、写作、编程、音乐、搜索、Agent、翻译、办公、设计、效率、PPT 等主流方向，未来会随着 AI 领域的发展持续扩展。",
+    "contactHeading": "联系我们",
+    "contactP1": "如果你有好的 AI 工具推荐，或者发现信息有误，欢迎通过 GitHub 提交 Issue 或直接联系我们。你的反馈会直接帮助我们改进。"
+  },
+  "tool": {
+    "free": "免费",
+    "freemium": "免费/付费",
+    "paid": "付费"
+  },
+  "category": {
+    "descriptionTemplate": "发现最好的{category}类 AI 工具",
+    "titleSuffix": " — AI 工具"
+  }
+}

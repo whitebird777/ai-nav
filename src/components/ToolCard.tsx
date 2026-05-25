@@ -1,15 +1,11 @@
-// 工具卡片 — 展示单个 AI 工具
-// 用途：logo（首字母 fallback）、名称、描述、标签、价格、分类、精选标识
+// 工具卡片 — locale-aware
 
-import Link from 'next/link'
+'use client'
+
+import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 import { ExternalLink } from 'lucide-react'
 import type { ToolWithCategory } from '@/lib/types'
-
-const pricingLabel: Record<string, string> = {
-  free: '免费',
-  freemium: '免费/付费',
-  paid: '付费',
-}
 
 const pricingStyle: Record<string, string> = {
   free: 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400',
@@ -36,20 +32,38 @@ function getAvatarColor(name: string): string {
   return avatarColors[Math.abs(hash) % avatarColors.length]
 }
 
-export default function ToolCard({ tool }: { tool: ToolWithCategory }) {
+export default function ToolCard({
+  tool,
+  locale,
+}: {
+  tool: ToolWithCategory
+  locale: string
+}) {
+  const t = useTranslations('tool')
+  const tc = useTranslations('common')
+
+  const pricingLabel: Record<string, string> = {
+    free: t('free'),
+    freemium: t('freemium'),
+    paid: t('paid'),
+  }
+
+  const categoryDisplayName =
+    locale === 'en' && tool.category_name_en
+      ? tool.category_name_en
+      : tool.category_name
+
   return (
     <Link
       href={`/tool/${tool.slug}`}
       className="group relative flex flex-col rounded-xl border border-zinc-200 bg-white p-5 no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
     >
-      {/* 精选标识 */}
       {tool.featured && (
         <div className="absolute right-3 top-3 rounded-md bg-zinc-900 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-zinc-50 dark:bg-zinc-100 dark:text-zinc-900">
-          精选
+          {tc('featured')}
         </div>
       )}
 
-      {/* 顶部：Logo + 名称 + 价格 */}
       <div className="mb-3 flex items-start gap-3">
         {tool.logo_url ? (
           <img
@@ -85,15 +99,13 @@ export default function ToolCard({ tool }: { tool: ToolWithCategory }) {
         </div>
       </div>
 
-      {/* 描述 */}
       <p className="mb-3 line-clamp-2 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
         {tool.description}
       </p>
 
-      {/* 底部：分类 + 标签 */}
       <div className="mt-auto flex flex-wrap items-center gap-1.5 text-xs">
         <span className="rounded bg-zinc-100 px-2 py-0.5 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
-          {tool.category_name}
+          {categoryDisplayName}
         </span>
         {tool.tags?.slice(0, 3).map((tag) => (
           <span key={tag} className="text-zinc-400 dark:text-zinc-500">

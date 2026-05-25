@@ -1,9 +1,9 @@
-// Hero 区域 — 首页标语 + 动态数字统计
-// Client Component：计数动画需要 useEffect + IntersectionObserver
+// Hero 区域 — locale-aware 首页标语 + 动态数字统计
 
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { useTranslations } from 'next-intl'
 import Container from './Container'
 
 interface HeroStats {
@@ -61,6 +61,9 @@ function StatItem({ value, label }: { value: number; label: string }) {
 }
 
 export default function HeroSection({ toolCount, categoryCount }: HeroStats) {
+  const t = useTranslations('hero')
+  const tc = useTranslations('common')
+
   return (
     <section className="relative overflow-hidden border-b border-zinc-200 bg-gradient-to-b from-zinc-50 to-white pb-16 pt-20 dark:border-zinc-800 dark:from-zinc-900 dark:to-zinc-950 sm:pb-20 sm:pt-28">
       {/* 装饰光斑 */}
@@ -72,23 +75,23 @@ export default function HeroSection({ toolCount, categoryCount }: HeroStats) {
       <Container>
         <div className="relative mx-auto max-w-2xl text-center">
           <p className="text-sm font-medium uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
-            AI TOOLS NAVIGATOR
+            {t('subtitle')}
           </p>
           <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-5xl lg:text-6xl">
-            发现最好用的{' '}
+            {t('titleLine1')}{' '}
             <span className="bg-gradient-to-r from-zinc-900 to-zinc-500 bg-clip-text text-transparent dark:from-zinc-100 dark:to-zinc-400">
-              AI 工具
+              {t('titleHighlight')}
             </span>
           </h1>
           <p className="mt-4 text-lg leading-relaxed text-zinc-500 dark:text-zinc-400 sm:text-xl">
-            汇集精选 AI 产品，助你高效发现与选择
+            {t('description')}
           </p>
 
           {/* 动态统计 */}
           <div className="mt-10 flex items-center justify-center gap-8 sm:gap-12">
-            <StatItem value={toolCount} label="工具" />
+            <StatItem value={toolCount} label={tc('tools')} />
             <div className="h-10 w-px bg-zinc-200 dark:bg-zinc-800" />
-            <StatItem value={categoryCount} label="分类" />
+            <StatItem value={categoryCount} label={tc('categories')} />
           </div>
         </div>
       </Container>

@@ -24,7 +24,7 @@ export async function getTools(options?: {
 }): Promise<ToolWithCategory[]> {
   let query = supabase
     .from('tools')
-    .select('*, categories!inner(name, slug)')
+    .select('*, categories!inner(name, name_en, slug)')
     .order('created_at', { ascending: false })
 
   if (options?.category) {
@@ -46,10 +46,11 @@ export async function getTools(options?: {
 
   return (data || []).map((item) => {
     const tool = item as unknown as Tool
-    const cat = (item as Record<string, unknown>).categories as Record<string, string> | null
+    const cat = (item as Record<string, unknown>).categories as Record<string, string | null> | null
     return {
       ...tool,
       category_name: cat?.name ?? '',
+      category_name_en: cat?.name_en ?? null,
       category_slug: cat?.slug ?? '',
     } satisfies ToolWithCategory
   })
@@ -60,7 +61,7 @@ export async function getToolBySlug(
 ): Promise<ToolWithCategory | null> {
   const { data, error } = await supabase
     .from('tools')
-    .select('*, categories!inner(name, slug)')
+    .select('*, categories!inner(name, name_en, slug)')
     .eq('slug', slug)
     .single()
 
@@ -70,10 +71,11 @@ export async function getToolBySlug(
   }
 
   const tool = data as unknown as Tool
-  const cat = (data as Record<string, unknown>).categories as Record<string, string> | null
+  const cat = (data as Record<string, unknown>).categories as Record<string, string | null> | null
   return {
     ...tool,
     category_name: cat?.name ?? '',
+    category_name_en: cat?.name_en ?? null,
     category_slug: cat?.slug ?? '',
   } satisfies ToolWithCategory
 }
