@@ -125,9 +125,12 @@
   5. [x] HomeContent 接入 HeroSection，移除旧标题块
   6. [x] page.tsx 传递 toolCount、categoryCount
 
-### P2-T4. 新增 Analytics（轻量）
-- **Status**: pending
-- **Description**: Vercel Analytics 接入
+### P2-T4. 新增 Analytics（轻量） ✅
+- **Status**: completed
+- **Description**: Vercel Analytics 接入，轻量页面浏览分析
+- **Steps**:
+  1. [x] 安装 @vercel/analytics
+  2. [x] RootLayout 添加 <Analytics /> 组件
 
 ### P2-T5. About 页面重构
 - **Status**: pending
@@ -137,7 +140,7 @@
 
 ## Active
 
-- **P2-T4**: 新增 Analytics（轻量）
+- **P2-T5**: About 页面重构
 
 ## Backlog (Future)
 
@@ -161,3 +164,4 @@
 - [x] **P2-T1 — 扩充 AI 工具数据** (2026-05-25): 72 个工具 + 13 个分类 + sql/04_expand_tools.sql
 - [x] **P2-T2 — 工具详情页 SEO 强化** (2026-05-25): 72 工具多段结构化描述 + 前端 section 渲染 + canonical URL + 面包屑
 - [x] **P2-T3 — 首页产品感升级** (2026-05-25): Hero + count-up 动画 + ToolCard 升级 + Header 增强 + Footer 重写
+- [x] **P2-T4 — Vercel Analytics** (2026-05-25): @vercel/analytics 接入，轻量页面浏览分析
