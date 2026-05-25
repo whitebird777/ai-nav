@@ -103,9 +103,16 @@
   4. [x] 创建 sql/04_expand_tools.sql
   5. [x] 在 Supabase SQL Editor 执行并验证（13 分类 + 72 工具）
 
-### P2-T2. 工具详情页 SEO 强化
-- **Status**: pending
-- **Description**: 增加简介/功能/优缺点/使用场景/FAQ/结构化数据
+### P2-T2. 工具详情页 SEO 强化 ✅
+- **Status**: completed
+- **Description**: 72 工具描述扩写为多段结构化内容（介绍+功能+场景+人群+优势），前端按段落拆 section 展示，添加 canonical URL 和面包屑导航
+- **Steps**:
+  1. [x] 创建 sql/05_enrich_descriptions.sql — 72 个工具每个 4-5 段详细描述（工具介绍/核心功能/使用场景/适合人群/优势特点），每段用双换行分隔
+  2. [x] 更新 src/app/tool/[slug]/page.tsx — parseDescription() 拆段落渲染，第一段为导语样式，后续段落带分割线
+  3. [x] 添加 canonical URL（`<link rel="canonical">`）+ alternates metadata
+  4. [x] 面包屑导航（首页 > 分类 > 工具名）替换返回链接
+  5. [x] sitemap/robots 域名更新为 nav4i.com
+  6. [x] 用户需在 Supabase SQL Editor 执行 05 脚本
 
 ### P2-T3. 首页产品感升级
 - **Status**: pending
@@ -123,7 +130,7 @@
 
 ## Active
 
-- **P2-T1**: 扩充 AI 工具数据
+- **P2-T3**: 首页产品感升级
 
 ## Backlog (Future)
 
@@ -145,3 +152,4 @@
 - [x] **Task 8 — SEO Setup** (2026-05-24): generateMetadata 全覆盖 + OG/Twitter + sitemap + robots + JSON-LD
 - [x] **Task 9 — Deploy to Vercel** (2026-05-25): GitHub + Vercel CI/CD + 环境变量 + 线上验证通过
 - [x] **P2-T1 — 扩充 AI 工具数据** (2026-05-25): 72 个工具 + 13 个分类 + sql/04_expand_tools.sql
+- [x] **P2-T2 — 工具详情页 SEO 强化** (2026-05-25): 72 工具多段结构化描述 + 前端 section 渲染 + canonical URL + 面包屑

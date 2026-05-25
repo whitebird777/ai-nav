@@ -4,7 +4,7 @@
 import type { MetadataRoute } from 'next'
 import { getToolSlugs, getCategorySlugs } from '@/lib/tools'
 
-const BASE_URL = 'https://ai-navd.vercel.app'
+const BASE_URL = 'https://nav4i.com'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [toolSlugs, categorySlugs] = await Promise.all([

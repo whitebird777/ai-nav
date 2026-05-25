@@ -1,12 +1,14 @@
 // 工具详情页 — Server Component
-// SEO: generateStaticParams 预渲染 + generateMetadata 动态 meta
+// SEO: generateStaticParams 预渲染 + generateMetadata 动态 meta + canonical
 
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { getToolBySlug, getToolSlugs } from '@/lib/tools'
 import Container from '@/components/Container'
-import { ArrowLeft, ExternalLink } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
+
+const BASE_URL = 'https://nav4i.com'
 
 const pricingLabel: Record<string, string> = {
   free: '免费',
@@ -19,6 +21,15 @@ const pricingStyle: Record<string, string> = {
   freemium:
     'bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-400',
   paid: 'bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-400',
+}
+
+// 将 description 按双换行拆分为段落数组
+// 第一段为简介，后续段落为功能/场景/人群/优势等
+function parseDescription(description: string): string[] {
+  return description
+    .split(/\n{2,}/)
+    .map((p) => p.trim())
+    .filter(Boolean)
 }
 
 // 预渲染所有工具页面
@@ -41,12 +52,16 @@ export async function generateMetadata({
   }
 
   return {
-    title: tool.name,
+    title: `${tool.name} — AI Nav`,
     description: tool.description,
+    alternates: {
+      canonical: `${BASE_URL}/tool/${tool.slug}`,
+    },
     openGraph: {
       title: `${tool.name} — AI Nav`,
       description: tool.description,
       type: 'article',
+      url: `${BASE_URL}/tool/${tool.slug}`,
     },
     twitter: {
       card: 'summary',
@@ -65,6 +80,8 @@ export default async function ToolDetailPage({
   const tool = await getToolBySlug(slug)
 
   if (!tool) notFound()
+
+  const sections = parseDescription(tool.description)
 
   return (
     <>
@@ -91,14 +108,24 @@ export default async function ToolDetailPage({
 
       <div className="py-8 sm:py-12">
       <Container>
-        {/* 返回链接 */}
-        <Link
-          href="/"
-          className="mb-6 inline-flex items-center gap-1.5 text-sm text-zinc-500 no-underline hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-        >
-          <ArrowLeft size={16} />
-          返回首页
-        </Link>
+        {/* 面包屑 */}
+        <nav className="mb-6 flex items-center gap-1.5 text-sm text-zinc-500 dark:text-zinc-400">
+          <Link
+            href="/"
+            className="no-underline hover:text-zinc-900 dark:hover:text-zinc-100"
+          >
+            首页
+          </Link>
+          <span>/</span>
+          <Link
+            href={`/category/${tool.category_slug}`}
+            className="no-underline hover:text-zinc-900 dark:hover:text-zinc-100"
+          >
+            {tool.category_name}
+          </Link>
+          <span>/</span>
+          <span className="text-zinc-900 dark:text-zinc-100">{tool.name}</span>
+        </nav>
 
         {/* 工具信息 */}
         <div className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900 sm:p-8">
@@ -135,10 +162,21 @@ export default async function ToolDetailPage({
             </div>
           </div>
 
-          {/* 描述 */}
-          <p className="mb-6 text-base leading-relaxed text-zinc-600 dark:text-zinc-300">
-            {tool.description}
-          </p>
+          {/* 描述 — 按段落拆 section 展示 */}
+          <div className="mb-6 space-y-4">
+            {sections.map((paragraph, index) => (
+              <p
+                key={index}
+                className={`text-base leading-relaxed text-zinc-600 dark:text-zinc-300 ${
+                  index === 0
+                    ? 'text-zinc-800 dark:text-zinc-200'
+                    : 'border-t border-zinc-100 pt-4 dark:border-zinc-800'
+                }`}
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
 
           {/* 标签 */}
           {tool.tags && tool.tags.length > 0 && (
