@@ -30,5 +30,15 @@ export default async function HomePage() {
     getCategories(),
   ])
 
-  return <HomeContent tools={tools} categories={categories} />
+  const toolCount = tools.length
+  const categoryCount = categories.length
+
+  return (
+    <HomeContent
+      tools={tools}
+      categories={categories}
+      toolCount={toolCount}
+      categoryCount={categoryCount}
+    />
+  )
 }

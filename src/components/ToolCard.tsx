@@ -1,5 +1,5 @@
 // 工具卡片 — 展示单个 AI 工具
-// 用途：logo、名称、描述、标签、价格、分类
+// 用途：logo（首字母 fallback）、名称、描述、标签、价格、分类、精选标识
 
 import Link from 'next/link'
 import { ExternalLink } from 'lucide-react'
@@ -18,12 +18,37 @@ const pricingStyle: Record<string, string> = {
   paid: 'bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-400',
 }
 
+const avatarColors = [
+  'bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-400',
+  'bg-orange-100 text-orange-700 dark:bg-orange-950 dark:text-orange-400',
+  'bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-400',
+  'bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400',
+  'bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-400',
+  'bg-violet-100 text-violet-700 dark:bg-violet-950 dark:text-violet-400',
+  'bg-pink-100 text-pink-700 dark:bg-pink-950 dark:text-pink-400',
+]
+
+function getAvatarColor(name: string): string {
+  let hash = 0
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash)
+  }
+  return avatarColors[Math.abs(hash) % avatarColors.length]
+}
+
 export default function ToolCard({ tool }: { tool: ToolWithCategory }) {
   return (
     <Link
       href={`/tool/${tool.slug}`}
-      className="group flex flex-col rounded-xl border border-zinc-200 bg-white p-5 no-underline transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900"
+      className="group relative flex flex-col rounded-xl border border-zinc-200 bg-white p-5 no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
     >
+      {/* 精选标识 */}
+      {tool.featured && (
+        <div className="absolute right-3 top-3 rounded-md bg-zinc-900 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-zinc-50 dark:bg-zinc-100 dark:text-zinc-900">
+          精选
+        </div>
+      )}
+
       {/* 顶部：Logo + 名称 + 价格 */}
       <div className="mb-3 flex items-start gap-3">
         {tool.logo_url ? (
@@ -33,8 +58,10 @@ export default function ToolCard({ tool }: { tool: ToolWithCategory }) {
             className="h-10 w-10 shrink-0 rounded-lg object-cover"
           />
         ) : (
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-zinc-100 text-lg dark:bg-zinc-800">
-            🛠️
+          <div
+            className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-sm font-bold ${getAvatarColor(tool.name)}`}
+          >
+            {tool.name.charAt(0)}
           </div>
         )}
 
@@ -64,15 +91,12 @@ export default function ToolCard({ tool }: { tool: ToolWithCategory }) {
       </p>
 
       {/* 底部：分类 + 标签 */}
-      <div className="mt-auto flex flex-wrap items-center gap-2 text-xs">
+      <div className="mt-auto flex flex-wrap items-center gap-1.5 text-xs">
         <span className="rounded bg-zinc-100 px-2 py-0.5 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
           {tool.category_name}
         </span>
         {tool.tags?.slice(0, 3).map((tag) => (
-          <span
-            key={tag}
-            className="text-zinc-400 dark:text-zinc-500"
-          >
+          <span key={tag} className="text-zinc-400 dark:text-zinc-500">
             #{tag}
           </span>
         ))}
