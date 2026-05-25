@@ -91,19 +91,47 @@
 
 ---
 
+## Phase 2: 产品化升级（当前阶段）
+
+### P2-T1. 扩充 AI 工具数据 ✅
+- **Status**: completed
+- **Description**: 从 8 个工具扩展到 72 个，新增 7 个分类（共 13 分类）
+- **Steps**:
+  1. [x] 新增 7 个分类：AI 音乐、AI PPT、AI 搜索、AI Agent、AI 翻译、AI 办公、AI 设计
+  2. [x] 为 13 个分类各添加 4-6 个真实工具，共 64 条新数据
+  3. [x] 每条工具包含真实 name/description/url/pricing/tags/logo
+  4. [x] 创建 sql/04_expand_tools.sql
+  5. [x] 在 Supabase SQL Editor 执行并验证（13 分类 + 72 工具）
+
+### P2-T2. 工具详情页 SEO 强化
+- **Status**: pending
+- **Description**: 增加简介/功能/优缺点/使用场景/FAQ/结构化数据
+
+### P2-T3. 首页产品感升级
+- **Status**: pending
+- **Description**: Hero 区优化 / ToolCard 升级 / Header 升级 / Footer 重写
+
+### P2-T4. 新增 Analytics（轻量）
+- **Status**: pending
+- **Description**: Vercel Analytics 接入
+
+### P2-T5. About 页面重构
+- **Status**: pending
+- **Description**: 改为产品理念方向
+
+---
+
 ## Active
 
-<!-- 当前进行中的任务 -->
+- **P2-T1**: 扩充 AI 工具数据
 
-## Backlog (Phase 2+)
+## Backlog (Future)
 
 - [ ] 工具提交（用户投稿）
 - [ ] 收藏功能
 - [ ] 评论/评分系统
-- [ ] 访问统计
 - [ ] 多语言支持（中/英）
 - [ ] 管理后台
-- [ ] 自定义域名绑定
 
 ## Completed
 
@@ -116,3 +144,4 @@
 - [x] **Task 7 — About Page** (2026-05-24): /about 静态页面 + metadata
 - [x] **Task 8 — SEO Setup** (2026-05-24): generateMetadata 全覆盖 + OG/Twitter + sitemap + robots + JSON-LD
 - [x] **Task 9 — Deploy to Vercel** (2026-05-25): GitHub + Vercel CI/CD + 环境变量 + 线上验证通过
+- [x] **P2-T1 — 扩充 AI 工具数据** (2026-05-25): 72 个工具 + 13 个分类 + sql/04_expand_tools.sql
