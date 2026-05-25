@@ -114,9 +114,16 @@
   5. [x] sitemap/robots 域名更新为 nav4i.com
   6. [x] 用户需在 Supabase SQL Editor 执行 05 脚本
 
-### P2-T3. 首页产品感升级
-- **Status**: pending
-- **Description**: Hero 区优化 / ToolCard 升级 / Header 升级 / Footer 重写
+### P2-T3. 首页产品感升级 ✅
+- **Status**: completed
+- **Description**: Hero 区域 + 动态计数动画 / ToolCard hover + 首字母头像 + 精选标识 / Header GitHub + 提交工具 / Footer 三列产品页脚
+- **Steps**:
+  1. [x] 新建 HeroSection.tsx — 渐变背景 + 英文标签 + 中文标语 + IntersectionObserver count-up 动画
+  2. [x] ToolCard 升级 — hover:-translate-y-1 + shadow-lg、首字母头像 fallback（7 色调色板）、featured 精选标识
+  3. [x] Header 升级 — GitHub 链接（SVG 图标）+ 提交工具 pill 按钮
+  4. [x] Footer 重写 — 三列网格（品牌介绍/导航链接/版权声明），移除练手项目痕迹
+  5. [x] HomeContent 接入 HeroSection，移除旧标题块
+  6. [x] page.tsx 传递 toolCount、categoryCount
 
 ### P2-T4. 新增 Analytics（轻量）
 - **Status**: pending
@@ -130,7 +137,7 @@
 
 ## Active
 
-- **P2-T3**: 首页产品感升级
+- **P2-T4**: 新增 Analytics（轻量）
 
 ## Backlog (Future)
 
@@ -153,3 +160,4 @@
 - [x] **Task 9 — Deploy to Vercel** (2026-05-25): GitHub + Vercel CI/CD + 环境变量 + 线上验证通过
 - [x] **P2-T1 — 扩充 AI 工具数据** (2026-05-25): 72 个工具 + 13 个分类 + sql/04_expand_tools.sql
 - [x] **P2-T2 — 工具详情页 SEO 强化** (2026-05-25): 72 工具多段结构化描述 + 前端 section 渲染 + canonical URL + 面包屑
+- [x] **P2-T3 — 首页产品感升级** (2026-05-25): Hero + count-up 动画 + ToolCard 升级 + Header 增强 + Footer 重写
