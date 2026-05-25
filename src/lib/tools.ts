@@ -33,7 +33,7 @@ export async function getTools(options?: {
   if (options?.search) {
     // 搜索工具名、描述、标签
     query = query.or(
-      `name.ilike.%${options.search}%,description.ilike.%${options.search}%`
+      `name.ilike.%${options.search}%,description.ilike.%${options.search}%,description_en.ilike.%${options.search}%`
     )
   }
   if (options?.featured) {

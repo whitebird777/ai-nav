@@ -2,6 +2,7 @@
 
 'use client'
 
+import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { ExternalLink } from 'lucide-react'
@@ -41,6 +42,7 @@ export default function ToolCard({
 }) {
   const t = useTranslations('tool')
   const tc = useTranslations('common')
+  const [imgFailed, setImgFailed] = useState(false)
 
   const pricingLabel: Record<string, string> = {
     free: t('free'),
@@ -52,6 +54,11 @@ export default function ToolCard({
     locale === 'en' && tool.category_name_en
       ? tool.category_name_en
       : tool.category_name
+
+  const displayDescription =
+    locale === 'en' && tool.description_en
+      ? tool.description_en
+      : tool.description
 
   return (
     <Link
@@ -65,11 +72,12 @@ export default function ToolCard({
       )}
 
       <div className="mb-3 flex items-start gap-3">
-        {tool.logo_url ? (
+        {tool.logo_url && !imgFailed ? (
           <img
             src={tool.logo_url}
             alt={tool.name}
             className="h-10 w-10 shrink-0 rounded-lg object-cover"
+            onError={() => setImgFailed(true)}
           />
         ) : (
           <div
@@ -100,7 +108,7 @@ export default function ToolCard({
       </div>
 
       <p className="mb-3 line-clamp-2 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
-        {tool.description}
+        {displayDescription}
       </p>
 
       <div className="mt-auto flex flex-wrap items-center gap-1.5 text-xs">
