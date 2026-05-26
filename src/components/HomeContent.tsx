@@ -2,8 +2,9 @@
 
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useCallback } from 'react'
 import { useTranslations } from 'next-intl'
+import { useRouter } from '@/i18n/navigation'
 import type { Category, ToolWithCategory } from '@/lib/types'
 import Container from './Container'
 import HeroSection from './HeroSection'
@@ -29,6 +30,18 @@ export default function HomeContent({
   const [search, setSearch] = useState('')
   const [category, setCategory] = useState<string | null>(null)
   const t = useTranslations('common')
+  const router = useRouter()
+
+  const handleCategorySelect = useCallback(
+    (slug: string | null) => {
+      if (slug === 'entertainment') {
+        router.push('/play')
+      } else {
+        setCategory(slug)
+      }
+    },
+    [router]
+  )
 
   const filtered = useMemo(() => {
     let result = tools
@@ -64,7 +77,7 @@ export default function HomeContent({
             <CategoryFilter
               categories={categories}
               selected={category}
-              onSelect={setCategory}
+              onSelect={handleCategorySelect}
               locale={locale}
             />
           </div>
