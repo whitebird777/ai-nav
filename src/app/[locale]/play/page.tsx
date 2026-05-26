@@ -108,6 +108,31 @@ export default async function PlayPage({
               />
             </span>
           </Link>
+
+          {/* AI 梗王争霸 */}
+          <Link
+            href="/play/ai-meme-battle"
+            className="group flex flex-col rounded-xl border border-zinc-200 bg-white p-6 no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
+          >
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-100 text-2xl dark:bg-zinc-800">
+              🔥
+            </div>
+            <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+              {locale === 'zh' ? 'AI 梗王争霸' : 'AI Meme Battle'}
+            </h3>
+            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+              {locale === 'zh'
+                ? '跟 AI 斗梗，看谁才是真正的梗王。'
+                : 'Battle AI in meme warfare. Who will reign supreme?'}
+            </p>
+            <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-zinc-100">
+              {locale === 'zh' ? '开始挑战' : 'Start Challenge'}
+              <ArrowRight
+                size={16}
+                className="transition-transform group-hover:translate-x-0.5"
+              />
+            </span>
+          </Link>
         </div>
       </Container>
     </div>
