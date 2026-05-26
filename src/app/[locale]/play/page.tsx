@@ -71,7 +71,7 @@ export default async function PlayPage({
           {tc('backToHome')}
         </Link>
 
-        <div className="mb-10">
+        <div className="mb-10 text-center">
           <h1 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 sm:text-3xl">
             {locale === 'zh' ? '🎮 AI 娱乐实验室' : '🎮 AI Playground'}
           </h1>
