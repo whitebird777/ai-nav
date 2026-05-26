@@ -101,11 +101,11 @@ export default async function AiGuessPage({
       <div className="py-8 sm:py-12">
         <Container>
           <Link
-            href="/"
+            href="/play"
             className="mb-6 inline-flex items-center gap-1.5 text-sm text-zinc-500 no-underline hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
           >
             <ArrowLeft size={16} />
-            {tc('backToHome')}
+            {locale === 'zh' ? '返回娱乐大厅' : 'Back to Playground'}
           </Link>
 
           <div className="mx-auto max-w-lg">
