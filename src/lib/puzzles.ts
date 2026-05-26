@@ -5,11 +5,15 @@ import { supabase } from './supabase'
 export interface Puzzle {
   id: number
   title: string
+  title_en: string | null
   image_url: string
   options: string[]
+  options_en: string[] | null
   correct_answer: number
   funny_success_text: string
+  funny_success_text_en: string | null
   funny_fail_text: string
+  funny_fail_text_en: string | null
 }
 
 export async function getPuzzles(): Promise<Puzzle[]> {

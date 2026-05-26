@@ -6,15 +6,22 @@ import type { Puzzle } from '@/lib/puzzles'
 
 interface Props {
   puzzles: Puzzle[]
+  locale: string
 }
 
-export default function AiGuessGame({ puzzles }: Props) {
+export default function AiGuessGame({ puzzles, locale }: Props) {
   const [index, setIndex] = useState(0)
   const [selected, setSelected] = useState<number | null>(null)
   const [showResult, setShowResult] = useState(false)
 
   const puzzle = puzzles[index]
   if (!puzzle) return null
+
+  const isEn = locale === 'en'
+  const title = isEn && puzzle.title_en ? puzzle.title_en : puzzle.title
+  const options = isEn && puzzle.options_en ? puzzle.options_en : puzzle.options
+  const successText = isEn && puzzle.funny_success_text_en ? puzzle.funny_success_text_en : puzzle.funny_success_text
+  const failText = isEn && puzzle.funny_fail_text_en ? puzzle.funny_fail_text_en : puzzle.funny_fail_text
 
   const handleSelect = (optionIndex: number) => {
     if (showResult) return
@@ -34,7 +41,7 @@ export default function AiGuessGame({ puzzles }: Props) {
     <div>
       {/* 进度 */}
       <div className="mb-6 flex items-center justify-between text-sm text-zinc-500 dark:text-zinc-400">
-        <span>AI 猜画</span>
+        <span>{isEn ? 'AI Guess' : 'AI 猜画'}</span>
         <span>
           {index + 1} / {puzzles.length}
         </span>
@@ -52,12 +59,12 @@ export default function AiGuessGame({ puzzles }: Props) {
 
       {/* 问题标题 */}
       <h2 className="mb-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100 sm:text-xl">
-        {puzzle.title}
+        {title}
       </h2>
 
       {/* 选项 */}
       <div className="mb-6 grid gap-3 sm:grid-cols-2">
-        {puzzle.options.map((option, i) => {
+        {options.map((option, i) => {
           let btnClass =
             'relative rounded-xl border px-4 py-3.5 text-left text-sm font-medium transition-all duration-150 '
 
@@ -122,7 +129,7 @@ export default function AiGuessGame({ puzzles }: Props) {
                   : 'text-amber-800 dark:text-amber-300'
               }`}
             >
-              {isCorrect ? '答对了！' : '猜错了！'}
+              {isCorrect ? (isEn ? 'Correct!' : '答对了！') : (isEn ? 'Wrong!' : '猜错了！')}
             </p>
             <p
               className={`mt-1 text-sm ${
@@ -131,7 +138,7 @@ export default function AiGuessGame({ puzzles }: Props) {
                   : 'text-amber-700 dark:text-amber-400'
               }`}
             >
-              {isCorrect ? puzzle.funny_success_text : puzzle.funny_fail_text}
+              {isCorrect ? successText : failText}
             </p>
           </div>
 
@@ -140,7 +147,7 @@ export default function AiGuessGame({ puzzles }: Props) {
             onClick={handleNext}
             className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-800 active:scale-[0.98] dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 sm:w-auto sm:px-8"
           >
-            下一题
+            {isEn ? 'Next' : '下一题'}
             <ArrowRight size={16} />
           </button>
         </div>

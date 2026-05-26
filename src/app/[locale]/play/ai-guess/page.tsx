@@ -109,7 +109,7 @@ export default async function AiGuessPage({
           </Link>
 
           <div className="mx-auto max-w-lg">
-            <AiGuessGame puzzles={puzzles} />
+            <AiGuessGame puzzles={puzzles} locale={locale} />
           </div>
         </Container>
       </div>
