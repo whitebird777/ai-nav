@@ -133,6 +133,31 @@ export default async function PlayPage({
               />
             </span>
           </Link>
+
+          {/* AI 塔罗占卜 */}
+          <Link
+            href="/play/ai-tarot"
+            className="group flex flex-col rounded-xl border border-zinc-200 bg-white p-6 no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
+          >
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-100 text-2xl dark:bg-zinc-800">
+              🔮
+            </div>
+            <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+              {locale === 'zh' ? 'AI 塔罗占卜' : 'AI Tarot'}
+            </h3>
+            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+              {locale === 'zh'
+                ? '抽三张牌，让 AI 为你解读命运的暗示。'
+                : 'Draw three cards. Let AI unveil what fate has in store.'}
+            </p>
+            <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-zinc-100">
+              {locale === 'zh' ? '开始占卜' : 'Start Reading'}
+              <ArrowRight
+                size={16}
+                className="transition-transform group-hover:translate-x-0.5"
+              />
+            </span>
+          </Link>
         </div>
       </Container>
     </div>
