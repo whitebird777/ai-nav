@@ -46,10 +46,10 @@ export default function Header() {
             <Link
               href="/admin/checkins"
               title="Stats"
-              className="ml-0.5 hidden text-sm leading-none text-zinc-300 no-underline sm:inline dark:text-zinc-600"
+              className="hidden text-xl no-underline sm:inline"
               style={{ cursor: 'default' }}
             >
-              ·
+              📊
             </Link>
           )}
 
