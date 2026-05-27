@@ -49,7 +49,7 @@ export default function Header() {
               className="hidden text-xl no-underline sm:inline"
               style={{ cursor: 'default' }}
             >
-              📊
+              🤖
             </Link>
           )}
 
