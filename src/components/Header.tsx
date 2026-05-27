@@ -8,7 +8,7 @@ import { usePathname } from '@/i18n/navigation'
 import { Link } from '@/i18n/navigation'
 import Container from './Container'
 import ThemeToggle from './ThemeToggle'
-import { Heart, BarChart3 } from 'lucide-react'
+import { Heart } from 'lucide-react'
 
 function GitHubIcon({ size = 16 }: { size?: number }) {
   return (
@@ -42,6 +42,17 @@ export default function Header() {
             <span className="hidden sm:inline">AI Nav</span>
           </Link>
 
+          {process.env.NEXT_PUBLIC_SHOW_ADMIN === 'true' && (
+            <Link
+              href="/admin/checkins"
+              title="Stats"
+              className="ml-0.5 hidden text-sm leading-none text-zinc-300 no-underline sm:inline dark:text-zinc-600"
+              style={{ cursor: 'default' }}
+            >
+              ·
+            </Link>
+          )}
+
           {/* 右侧操作区 */}
           <div className="flex items-center gap-1">
             <nav className="flex items-center gap-1 text-sm">
@@ -64,17 +75,6 @@ export default function Header() {
                 <Heart size={14} />
                 <span>{locale === 'zh' ? '收藏' : 'Favs'}</span>
               </Link>
-              {process.env.NEXT_PUBLIC_SHOW_ADMIN === 'true' && (
-                <Link
-                  href="/admin/checkins"
-                  className="flex items-center gap-1 rounded-md px-3 py-1.5 text-zinc-600 no-underline hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                >
-                  <BarChart3 size={14} />
-                  <span className="hidden sm:inline">
-                    {locale === 'zh' ? '数据' : 'Stats'}
-                  </span>
-                </Link>
-              )}
             </nav>
 
             {/* GitHub */}
