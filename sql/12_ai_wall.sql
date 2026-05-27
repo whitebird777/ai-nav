@@ -1,12 +1,10 @@
--- AI Nav — AI 时光墙留言表（v2：支持回复 + 点赞排序 + 管理员删除）
+-- AI Nav — AI 时光墙留言表（v2）
 -- 在 Supabase SQL Editor 中执行
+-- 兼容：无表则创建，有旧表则迁移
 
--- 先删除旧表（如已有数据请先备份）
--- DROP TABLE IF EXISTS ai_wall_messages;
-
+-- Step 1: 建表（无表时）
 CREATE TABLE IF NOT EXISTS ai_wall_messages (
   id BIGSERIAL PRIMARY KEY,
-  parent_id INT REFERENCES ai_wall_messages(id) ON DELETE CASCADE,
   nickname TEXT NOT NULL DEFAULT '匿名',
   content TEXT NOT NULL,
   tag TEXT,
@@ -14,15 +12,20 @@ CREATE TABLE IF NOT EXISTS ai_wall_messages (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- 如果从旧表迁移，添加列：
--- ALTER TABLE ai_wall_messages ADD COLUMN IF NOT EXISTS parent_id INT REFERENCES ai_wall_messages(id) ON DELETE CASCADE;
--- ALTER TABLE ai_wall_messages DROP COLUMN IF EXISTS ai_reply;
+-- Step 2: 迁移旧表 — 添加 parent_id
+ALTER TABLE ai_wall_messages
+  ADD COLUMN IF NOT EXISTS parent_id INT REFERENCES ai_wall_messages(id) ON DELETE CASCADE;
 
+-- Step 3: 移除旧的 AI 回复字段（如有）
+ALTER TABLE ai_wall_messages
+  DROP COLUMN IF EXISTS ai_reply;
+
+-- Step 4: 索引
 CREATE INDEX IF NOT EXISTS idx_wall_parent ON ai_wall_messages (parent_id);
 CREATE INDEX IF NOT EXISTS idx_wall_likes ON ai_wall_messages (likes DESC);
 CREATE INDEX IF NOT EXISTS idx_wall_created ON ai_wall_messages (created_at DESC);
 
--- RLS
+-- Step 5: RLS
 ALTER TABLE ai_wall_messages ENABLE ROW LEVEL SECURITY;
 
 DROP POLICY IF EXISTS "Allow public insert" ON ai_wall_messages;
