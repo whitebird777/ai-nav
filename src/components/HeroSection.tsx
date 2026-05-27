@@ -5,10 +5,12 @@
 import { useState, useEffect, useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import Container from './Container'
+import DailyCheckIn from './DailyCheckIn'
 
 interface HeroStats {
   toolCount: number
   categoryCount: number
+  locale: string
 }
 
 function AnimatedNumber({ value }: { value: number }) {
@@ -60,7 +62,7 @@ function StatItem({ value, label }: { value: number; label: string }) {
   )
 }
 
-export default function HeroSection({ toolCount, categoryCount }: HeroStats) {
+export default function HeroSection({ toolCount, categoryCount, locale }: HeroStats) {
   const t = useTranslations('hero')
   const tc = useTranslations('common')
 
@@ -92,6 +94,11 @@ export default function HeroSection({ toolCount, categoryCount }: HeroStats) {
             <StatItem value={toolCount} label={tc('tools')} />
             <div className="h-10 w-px bg-zinc-200 dark:bg-zinc-800" />
             <StatItem value={categoryCount} label={tc('categories')} />
+          </div>
+
+          {/* 每日打卡 */}
+          <div className="mt-8">
+            <DailyCheckIn locale={locale} />
           </div>
         </div>
       </Container>

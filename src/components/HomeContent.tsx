@@ -65,7 +65,7 @@ export default function HomeContent({
 
   return (
     <div>
-      <HeroSection toolCount={toolCount} categoryCount={categoryCount} />
+      <HeroSection toolCount={toolCount} categoryCount={categoryCount} locale={locale} />
 
       <div className="py-8 sm:py-12">
         <Container>
