@@ -5,6 +5,7 @@ import type { Metadata } from 'next'
 import { Link } from '@/i18n/navigation'
 import { routing } from '@/i18n/routing'
 import Container from '@/components/Container'
+import FavoriteButton from '@/components/FavoriteButton'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 const BASE_URL = 'https://nav4i.com'
@@ -87,8 +88,11 @@ export default async function PlayPage({
           {/* AI 画的是啥？ */}
           <Link
             href="/play/ai-guess"
-            className="group flex flex-col rounded-xl border border-zinc-200 bg-white p-6 no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
+            className="group relative flex flex-col rounded-xl border border-zinc-200 bg-white p-6 no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
           >
+            <div className="absolute right-3 top-3">
+              <FavoriteButton type="game" id="ai-guess" gameMeta={{ id: 'ai-guess', name_zh: 'AI 画的是啥？', name_en: 'What Did AI Draw?', icon: '🎨', desc_zh: '猜猜 AI 到底画了什么离谱东西。', desc_en: 'Guess what ridiculous thing the AI drew.', path: '/play/ai-guess' }} />
+            </div>
             <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-100 text-2xl dark:bg-zinc-800">
               🎨
             </div>
@@ -112,8 +116,11 @@ export default async function PlayPage({
           {/* AI 梗王争霸 */}
           <Link
             href="/play/ai-meme-battle"
-            className="group flex flex-col rounded-xl border border-zinc-200 bg-white p-6 no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
+            className="group relative flex flex-col rounded-xl border border-zinc-200 bg-white p-6 no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
           >
+            <div className="absolute right-3 top-3">
+              <FavoriteButton type="game" id="ai-meme-battle" gameMeta={{ id: 'ai-meme-battle', name_zh: 'AI 梗王争霸', name_en: 'AI Meme Battle', icon: '🔥', desc_zh: '跟 AI 斗梗，看谁才是真正的梗王。', desc_en: 'Battle AI in meme warfare. Who will reign supreme?', path: '/play/ai-meme-battle' }} />
+            </div>
             <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-100 text-2xl dark:bg-zinc-800">
               🔥
             </div>
@@ -137,8 +144,11 @@ export default async function PlayPage({
           {/* AI 塔罗占卜 */}
           <Link
             href="/play/ai-tarot"
-            className="group flex flex-col rounded-xl border border-zinc-200 bg-white p-6 no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
+            className="group relative flex flex-col rounded-xl border border-zinc-200 bg-white p-6 no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
           >
+            <div className="absolute right-3 top-3">
+              <FavoriteButton type="game" id="ai-tarot" gameMeta={{ id: 'ai-tarot', name_zh: 'AI 塔罗占卜', name_en: 'AI Tarot', icon: '🔮', desc_zh: '抽三张牌，让 AI 为你解读命运的暗示。', desc_en: 'Draw three cards. Let AI unveil what fate has in store.', path: '/play/ai-tarot' }} />
+            </div>
             <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-100 text-2xl dark:bg-zinc-800">
               🔮
             </div>
@@ -162,8 +172,11 @@ export default async function PlayPage({
           {/* AI 谁是卧底 */}
           <Link
             href="/play/ai-undercover"
-            className="group flex flex-col rounded-xl border border-zinc-200 bg-white p-6 no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
+            className="group relative flex flex-col rounded-xl border border-zinc-200 bg-white p-6 no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
           >
+            <div className="absolute right-3 top-3">
+              <FavoriteButton type="game" id="ai-undercover" gameMeta={{ id: 'ai-undercover', name_zh: 'AI 谁是卧底', name_en: 'AI Undercover', icon: '🕵️', desc_zh: '跟 AI 斗智斗勇，找出隐藏的卧底。', desc_en: 'Outsmart the AI and uncover the hidden spy.', path: '/play/ai-undercover' }} />
+            </div>
             <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-100 text-2xl dark:bg-zinc-800">
               🕵️
             </div>
@@ -187,8 +200,11 @@ export default async function PlayPage({
           {/* AI 你画我猜 */}
           <Link
             href="/play/ai-draw-guess"
-            className="group flex flex-col rounded-xl border border-zinc-200 bg-white p-6 no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
+            className="group relative flex flex-col rounded-xl border border-zinc-200 bg-white p-6 no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
           >
+            <div className="absolute right-3 top-3">
+              <FavoriteButton type="game" id="ai-draw-guess" gameMeta={{ id: 'ai-draw-guess', name_zh: 'AI 你画我猜', name_en: 'AI Draw & Guess', icon: '✏️', desc_zh: 'AI 负责画，你负责猜，看你能对几个。', desc_en: 'AI draws, you guess. Test your visual intuition.', path: '/play/ai-draw-guess' }} />
+            </div>
             <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-100 text-2xl dark:bg-zinc-800">
               ✏️
             </div>
@@ -212,8 +228,11 @@ export default async function PlayPage({
           {/* AI 真心话大冒险 */}
           <Link
             href="/play/ai-truth-or-dare"
-            className="group flex flex-col rounded-xl border border-zinc-200 bg-white p-6 no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
+            className="group relative flex flex-col rounded-xl border border-zinc-200 bg-white p-6 no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
           >
+            <div className="absolute right-3 top-3">
+              <FavoriteButton type="game" id="ai-truth-or-dare" gameMeta={{ id: 'ai-truth-or-dare', name_zh: 'AI 真心话大冒险', name_en: 'AI Truth or Dare', icon: '😈', desc_zh: 'AI 给你出题，真心话还是大冒险，你敢接吗？', desc_en: 'AI challenges you. Truth or Dare — pick your poison.', path: '/play/ai-truth-or-dare' }} />
+            </div>
             <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-100 text-2xl dark:bg-zinc-800">
               😈
             </div>

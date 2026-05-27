@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { ExternalLink } from 'lucide-react'
 import type { ToolWithCategory } from '@/lib/types'
+import FavoriteButton from './FavoriteButton'
 
 const pricingStyle: Record<string, string> = {
   free: 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400',
@@ -65,11 +66,14 @@ export default function ToolCard({
       href={`/tool/${tool.slug}`}
       className="group relative flex flex-col rounded-xl border border-zinc-200 bg-white p-5 no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
     >
-      {tool.featured && (
-        <div className="absolute right-3 top-3 rounded-md bg-zinc-900 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-zinc-50 dark:bg-zinc-100 dark:text-zinc-900">
-          {tc('featured')}
-        </div>
-      )}
+      <div className="absolute right-3 top-3 flex items-center gap-1.5">
+        <FavoriteButton type="tool" id={tool.slug} />
+        {tool.featured && (
+          <div className="rounded-md bg-zinc-900 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-zinc-50 dark:bg-zinc-100 dark:text-zinc-900">
+            {tc('featured')}
+          </div>
+        )}
+      </div>
 
       <div className="mb-3 flex items-start gap-3">
         {tool.logo_url && !imgFailed ? (

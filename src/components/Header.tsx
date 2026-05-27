@@ -8,6 +8,7 @@ import { usePathname } from '@/i18n/navigation'
 import { Link } from '@/i18n/navigation'
 import Container from './Container'
 import ThemeToggle from './ThemeToggle'
+import { Heart } from 'lucide-react'
 
 function GitHubIcon({ size = 16 }: { size?: number }) {
   return (
@@ -55,6 +56,13 @@ export default function Header() {
                 className="rounded-md px-3 py-1.5 text-zinc-600 no-underline hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
               >
                 {t('about')}
+              </Link>
+              <Link
+                href="/favorites"
+                className="flex items-center gap-1 rounded-md px-3 py-1.5 text-zinc-600 no-underline hover:text-red-500 dark:text-zinc-400 dark:hover:text-red-400"
+              >
+                <Heart size={14} />
+                <span>{locale === 'zh' ? '收藏' : 'Favs'}</span>
               </Link>
             </nav>
 
