@@ -33,25 +33,27 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-zinc-200 bg-white/80 backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-950/80">
       <Container>
         <div className="flex h-14 items-center justify-between">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center gap-2 text-lg font-bold text-zinc-900 no-underline dark:text-zinc-100"
-          >
-            <span className="text-xl">🤖</span>
-            <span className="hidden sm:inline">AI Nav</span>
-          </Link>
-
-          {process.env.NEXT_PUBLIC_SHOW_ADMIN === 'true' && (
+          {/* Logo + 隐秘入口 */}
+          <div className="flex items-center gap-1">
             <Link
-              href="/admin/checkins"
-              title="Stats"
-              className="hidden text-xl no-underline sm:inline"
-              style={{ cursor: 'default' }}
+              href="/"
+              className="flex items-center gap-2 text-lg font-bold text-zinc-900 no-underline dark:text-zinc-100"
             >
-              🤖
+              <span className="text-xl">🤖</span>
+              <span className="hidden sm:inline">AI Nav</span>
             </Link>
-          )}
+
+            {process.env.NEXT_PUBLIC_SHOW_ADMIN === 'true' && (
+              <Link
+                href="/admin/checkins"
+                title="Stats"
+                className="text-xl no-underline"
+                style={{ cursor: 'default' }}
+              >
+                🤖
+              </Link>
+            )}
+          </div>
 
           {/* 右侧操作区 */}
           <div className="flex items-center gap-1">
