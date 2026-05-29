@@ -252,6 +252,34 @@ export default async function PlayPage({
               />
             </span>
           </Link>
+
+          {/* AI 时间胶囊 */}
+          <Link
+            href="/play/time-capsule"
+            className="group relative flex flex-col rounded-xl border border-zinc-200 bg-white p-6 no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
+          >
+            <div className="absolute right-3 top-3">
+              <FavoriteButton type="game" id="ai-time-capsule" gameMeta={{ id: 'ai-time-capsule', name_zh: 'AI 时间胶囊', name_en: 'AI Time Capsule', icon: '⏳', desc_zh: '给未来的自己写一封信，AI 替你封存在时间深处。', desc_en: 'Write a letter to your future self. AI will seal it deep in time.', path: '/play/time-capsule' }} />
+            </div>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-100 text-2xl dark:bg-zinc-800">
+              ⏳
+            </div>
+            <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+              {locale === 'zh' ? 'AI 时间胶囊' : 'AI Time Capsule'}
+            </h3>
+            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+              {locale === 'zh'
+                ? '给未来的自己写一封信，AI 替你封存在时间深处。'
+                : 'Write a letter to your future self. AI will seal it deep in time.'}
+            </p>
+            <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-zinc-100">
+              {locale === 'zh' ? '开始体验' : 'Start Experience'}
+              <ArrowRight
+                size={16}
+                className="transition-transform group-hover:translate-x-0.5"
+              />
+            </span>
+          </Link>
         </div>
       </Container>
     </div>
