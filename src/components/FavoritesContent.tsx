@@ -14,7 +14,6 @@ const GAME_COLORS: Record<string, string> = {
   'ai-tarot': 'bg-purple-50 text-purple-700 dark:bg-purple-950 dark:text-purple-400',
   'ai-undercover': 'bg-indigo-50 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-400',
   'ai-draw-guess': 'bg-pink-50 text-pink-700 dark:bg-pink-950 dark:text-pink-400',
-  'ai-truth-or-dare': 'bg-sky-50 text-sky-700 dark:bg-sky-950 dark:text-sky-400',
   'ai-time-capsule': 'bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-400',
 }
 

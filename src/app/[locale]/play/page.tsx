@@ -225,34 +225,6 @@ export default async function PlayPage({
             </span>
           </Link>
 
-          {/* AI 真心话大冒险 */}
-          <Link
-            href="/play/ai-truth-or-dare"
-            className="group relative flex flex-col rounded-xl border border-zinc-200 bg-white p-6 no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
-          >
-            <div className="absolute right-3 top-3">
-              <FavoriteButton type="game" id="ai-truth-or-dare" gameMeta={{ id: 'ai-truth-or-dare', name_zh: 'AI 真心话大冒险', name_en: 'AI Truth or Dare', icon: '😈', desc_zh: 'AI 给你出题，真心话还是大冒险，你敢接吗？', desc_en: 'AI challenges you. Truth or Dare — pick your poison.', path: '/play/ai-truth-or-dare' }} />
-            </div>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-100 text-2xl dark:bg-zinc-800">
-              😈
-            </div>
-            <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-              {locale === 'zh' ? 'AI 真心话大冒险' : 'AI Truth or Dare'}
-            </h3>
-            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-              {locale === 'zh'
-                ? 'AI 给你出题，真心话还是大冒险，你敢接吗？'
-                : 'AI challenges you. Truth or Dare — pick your poison.'}
-            </p>
-            <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-zinc-100">
-              {locale === 'zh' ? '开始挑战' : 'Start Challenge'}
-              <ArrowRight
-                size={16}
-                className="transition-transform group-hover:translate-x-0.5"
-              />
-            </span>
-          </Link>
-
           {/* AI 时间胶囊 */}
           <Link
             href="/play/time-capsule"
